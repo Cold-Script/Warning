@@ -14,7 +14,7 @@ if not CoreGui:FindFirstChild("Nofitication") then
     Nofitication_Layout.SortOrder = Enum.SortOrder.LayoutOrder
     Nofitication_Layout.VerticalAlignment = Enum.VerticalAlignment.Bottom
 end
-function Library:Notify(desc, time)
+function Library:Notify(desc, image, time)
     local color = Color3.new(1,1,1)
     local Ambient_Shadow = Instance.new("ImageLabel")
     local Window = Instance.new("Frame")
@@ -51,7 +51,7 @@ function Library:Notify(desc, time)
   	Warning.BackgroundTransparency = 0.75
   	Warning.Position = UDim2.new(-0.4, 0, 0.0075, 0)
   	Warning.Size = UDim2.new(0, 80, 0, 80)
-  	Warning.Image = "rbxassetid://3944668821"
+  	Warning.Image = image or "rbxassetid://3944668821"
   	Warning.ImageColor3 = Color3.fromRGB(255,255,255)
   	Warning.ScaleType = Enum.ScaleType.Slice
     Warning.ImageTransparency = 0
@@ -125,8 +125,8 @@ function Library:Notify(desc, time)
     local Script = Instance.new('LocalScript', Ambient_Shadow)
     Ambient_Shadow:TweenSize(UDim2.new(0, 240, 0, 100), "Out", "Linear", 0.2)
     Window.Size = UDim2.new(0, 230, 0, 80)
-    Outline:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Linear", time)
-    wait(time)
+    Outline:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Linear", time or 5)
+    wait(time or 5)
     Ambient_Shadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
     wait(0.2)
     Ambient_Shadow:Destroy()
