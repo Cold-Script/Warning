@@ -133,6 +133,26 @@ function Library:Notify(desc, image, time)
     end
     coroutine.wrap(LocalScript)()
 end
+game:GetService("RunService").RenderStepped:Connect(function()
+if getgenv().NotifyRainbow then
+Warning.ImageColor3 = Color3.fromHSV(tick() % 5/5, 1, 1)
+Outline.BackgroundColor3 = Color3.fromHSV(tick() % 5/5, 1, 1)
+Title.TextColor3 = Color3.fromHSV(tick() % 5/5, 1, 1)
+Description.TextColor3 = Color3.fromHSV(tick() % 5/5, 1, 1)
+UI.Color = Color3.fromHSV(tick() % 5/5, 1, 1)
+UI2.Color = Color3.fromHSV(tick() % 5/5, 1, 1)
+UI3.Color = Color3.fromHSV(tick() % 5/5, 1, 1)
+else
+local color = Color3.new(1,1,1)
+Warning.ImageColor3 = color
+Outline.BackgroundColor3 = color
+Title.TextColor3 = color
+Description.TextColor3 = color
+UI.Color = color
+UI2.Color = color
+UI3.Color = color
+end
+end)
 return Library
 
 
