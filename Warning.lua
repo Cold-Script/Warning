@@ -120,20 +120,7 @@ function Library:Notify(desc, image, time)
     UI3.Color = color
     UI3.Parent = Warning
     UI3.Thickness = 2
-  
-    local function LocalScript()
-    local Script = Instance.new('LocalScript', Ambient_Shadow)
-    Ambient_Shadow:TweenSize(UDim2.new(0, 240, 0, 100), "Out", "Linear", 0.2)
-    Window.Size = UDim2.new(0, 230, 0, 80)
-    Outline:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Linear", time or 5)
-    wait(time or 5)
-    Ambient_Shadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
-    wait(0.2)
-    Ambient_Shadow:Destroy()
-    end
-    coroutine.wrap(LocalScript)()
-end
-game:GetService("RunService").RenderStepped:Connect(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
 if getgenv().NotifyRainbow then
 Warning.ImageColor3 = Color3.fromHSV(tick() % 5/5, 1, 1)
 Outline.BackgroundColor3 = Color3.fromHSV(tick() % 5/5, 1, 1)
@@ -153,6 +140,18 @@ UI2.Color = color
 UI3.Color = color
 end
 end)
+    local function LocalScript()
+    local Script = Instance.new('LocalScript', Ambient_Shadow)
+    Ambient_Shadow:TweenSize(UDim2.new(0, 240, 0, 100), "Out", "Linear", 0.2)
+    Window.Size = UDim2.new(0, 230, 0, 80)
+    Outline:TweenSize(UDim2.new(0, 0, 0, 1), "Out", "Linear", time or 5)
+    wait(time or 5)
+    Ambient_Shadow:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Linear", 0.2)
+    wait(0.2)
+    Ambient_Shadow:Destroy()
+    end
+    coroutine.wrap(LocalScript)()
+end
 return Library
 
 
